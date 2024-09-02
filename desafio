@@ -25,12 +25,17 @@ int insereProduto(Produto produtos[], int numProdutos){ //inserir
             printf("\nCodigo ja existente\n");
             return numProdutos;
         }
-        // if(produtos[numProdutos].cod !== a){
-        //     printf("\nO código precisa ser um inteiro")
-        // }
     }
     printf("Digite o nome do produto: ");
     scanf("%s", produtos[numProdutos].nome);
+
+    for(int i =0; i < numProdutos; i++){
+        if(strcmp(produtos[i].nome, produtos[numProdutos].nome) == 0){
+            printf("\nProduto ja cadastrado\n");
+            return numProdutos;
+        }
+    }
+
     printf("Digite o preco do produto: ");
     scanf("%f", &produtos[numProdutos].preco);
     printf("Digite o quantidade em estoque: ");
@@ -98,7 +103,7 @@ int main(){
     do { 
         printf("\n=== Menu de Opcoes ===\n1.Inserir produtos \n2.Listar todos os produtos \n3.Buscar produto por nome \n4.Excluir produto por nome \n5.Sair \nEscolha uma opcao: ");
         scanf("%d", &indice);
-        printf("%d", indice);
+
         switch (indice){
             case 1: //inserir
                 numProdutos = insereProduto(produtos, numProdutos);
